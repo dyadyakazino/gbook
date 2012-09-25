@@ -21,6 +21,25 @@ table.post_table th{
 	height:25px;
 	font-size:15px;
 }
+
+@font-face {
+	font-family: 'DroidSansRegular';
+	src: url('/font/droidsans-webfont.eot') format('eot'),
+		 url('/font/droidsans-webfont.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+
+}
+
+@font-face {
+	font-family: 'DroidSansBold';
+	src: url('../dfont/droidsans-bold-webfont.eot') format('eot'),
+		 url('../dfont/droidsans-bold-webfont.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+
+}
+
 table.post_table td{
 	border-right:solid 1px #e7e7e7;
 	height:20px;

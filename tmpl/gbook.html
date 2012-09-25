@@ -106,12 +106,13 @@ $(document).ready(documentready);
 
 <body>
 <div class="c1">
-<a href="/htdocs/index.cgi">На главную</a></div>
+<a class="link" href="/htdocs/index.cgi">На главную</a></div>
+<div style="background-color:#f1f1f1;"><img src="gb.png" /></div>
 <div class="post_form">
 <form method="POST" action="/htdocs/index.cgi" id="main">
 <table>
 <tr>
-<td>Имя пользaвателя*: </td><td><input type="text" name="u_name" id="user"/></td><td>
+<td class="link1">Имя пользaвателя*: </td><td><input type="text" name="u_name" id="user"/></td><td>
 <div class="error_c1">
   <TMPL_IF er_user><TMPL_VAR er_user></TMPL_IF>
 </div></td></tr>

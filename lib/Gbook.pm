@@ -72,6 +72,9 @@ sub do_gbook{
 	$req = MyDB->sql( $req, undef, $n, $offset );
 	while( my %r = $req->sql_get_line ){
 		$counter++;
+		if($n > 3 && $counter == $n){#ERROR:hide last post on page
+			last;
+		}
 		push @{$self->{'t'}->{'loop'}}, {	'tr_class'	=>	( $counter % 2 == 0 ) ? 'even' : '',
 											'u_name'	=>	$r{'u_name'},
 											'homepage'	=>	$r{'homepage'},
