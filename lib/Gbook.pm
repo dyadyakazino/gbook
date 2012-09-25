@@ -13,13 +13,13 @@ use MyDB;
 sub setup{
 	my $self = shift;
 	my $query = $self->query();
-	
+
 	$self->start_mode('index');
 	$self->mode_param('do');
-	
+
 	$self->{'t'} = {};
 	$self->{'usr'}->{'ip'} = $ENV{'HTTP_X_FORWARDED_FOR'} || $ENV{'HTTP_X_REAL_IP'} || $ENV{'REMOTE_ADDR'};
-	
+
 	$self->run_modes(
 			'AUTOLOAD'	=>	'index',
 			'gbook'		=>	'do_gbook',
@@ -30,6 +30,7 @@ sub setup{
 sub index{
 	#Возврат стартовой страницы
 	my $self = shift;
+
 	$self->header_add( '-type' => 'text/html' );
 	return $self->load_tmpl( 'index.html' )->output();
 }
@@ -41,19 +42,19 @@ sub do_gbook{
 
 	#Пейджирование
 	my $req = "SELECT * FROM posts ORDER BY id DESC LIMIT ? OFFSET ?";
-	
+
 	my $counter = 0;
 	my $i = 0;
 
 	my $n = $Cfg::posts_on_page;
 	my $page = $q->param('page');
 	$page ||= 1;
-	
+
 	my %all = MyDB->sql_select_line( "SELECT COUNT(*) as c FROM posts" );
 	my $all = $all{'c'};
 	my $pages = ceil( $all/$n );
 	my $offset = $n * ( $page - 1 );
-			
+
 	$self->{'t'}->{'n'} = $n;
 	$self->{'t'}->{'all'} = $all;
 	$self->{'t'}->{'next'} = ( $page == $pages ) ? '#' : 'http://'.$ENV{'HTTP_HOST'}.'/htdocs/index.cgi?do=gbook&page='.( $page + 1 );
@@ -64,7 +65,7 @@ sub do_gbook{
 			'link'			=>	( $i == $page ) ? '#' : 'http://'.$ENV{'HTTP_HOST'}.'/htdocs/index.cgi?do=gbook&page='.$i
 		};
 	}
-			
+
 
 	$req = MyDB->sql( $req, undef, $n, $offset );
 	while( my %r = $req->sql_get_line ){
@@ -78,7 +79,7 @@ sub do_gbook{
 											'counter'	=>	$counter
 										};
 	}
-	
+
 	$self->{'t'}->{'pkey'} = $Cfg::public_key;
 	return $self->load_tmpl( 'gbook.html' )->output();
 }
@@ -93,23 +94,23 @@ sub do_post{
 	my $er = 'false';
 	#CAPTCHA
 	if( $self->check_captcha( $q->param('recaptcha_response_field'), $q->param('recaptcha_challenge_field') ) ne '1' ){
-		$self->{'t'}->{'er_captcha'} = 'Неверно введены проверочные слова.';	
-		$er = 'true';	
+		$self->{'t'}->{'er_captcha'} = 'Неверно введены проверочные слова.';
+		$er = 'true';
 	}
-	
+
 	my $user = $q->param('u_name');
 	$user =~ s/\W//g;
 	if( $user eq '' ){
 		$self->{'t'}->{'er_user'} = "Неверное имя пользователя.";
 		$er = 'true';
 	}
-	
+
 	my $post = $q->param('post');
 	$post =~ s/<.*?>//g;
 	if( $post eq '' ){
 		$self->{'t'}->{'er_post'} = 'Ошибка: пустое сообщение.';
 		$er = 'true';
-	}	
+	}
 	$q->param('homepage') =~ m,^(https?://.+),;
 	my $hp = $1;
 	unless( $q->param('email') =~ /^"?[\w!#$%&'*+-\/=?_`{|}~(\[\])\^,:;<>]*(\."([\w!#$%&'*+-\/=?_`{|}~(\[\])\^,:;<>]|\\@?|\\"|\\|\\\s)*"\.)*[\w!#$%&'*+-\/=?_`{|}~(\[\])\^,:;<>]*"?@(([A-Za-z0-9-]+(\.[A-Za-z]{2,10}){1,5})|(\[\d{1,3}(\.\d{1,3}){3}\]))$/ ){
@@ -129,9 +130,9 @@ sub load_tmpl{
 	#Шаблонизатор
 	my $self = shift;
 	my $file = shift;
-	
+
 	my $vars = shift || $self->{'t'};
-	my $template = new HTML::Template::Compiled( 	'filename'	=>	"$ENV{'HTML_TEMPLATE_ROOT'}/$file",
+	my $template = new HTML::Template::Compiled( 	'filename'	=>	$main::HTML_TEMPLATE_ROOT."/$file",
 													'global_vars'	=>	'1' );
 	$template->param( %$vars );
 	return $template;
