@@ -1,0 +1,23 @@
+server {
+    listen 127.0.0.1:80;
+    server_name gbook;
+    access_log  /var/www/gbook/log/access_log;
+    error_log   /var/www/gbook/log/error_log;
+
+    root /var/www/gbook/htdocs;
+
+    location / {
+        set $scriptname "";
+        if ($fastcgi_script_name = "/") {
+            set $scriptname "main";
+        }
+        if ($fastcgi_script_name ~ ^/(.*)/$) {
+            set $scriptname $1;
+        }
+        gzip off;
+        fastcgi_pass 127.0.0.1:9090;
+        fastcgi_param SCRIPT_FILENAME $scriptname;
+        include /etc/nginx/fastcgi_params;
+        fastcgi_param HTML_TEMPLATE_ROOT $document_root/../tmpl;
+   }
+}
