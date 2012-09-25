@@ -1,11 +1,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=KOI-8" />
 <meta http-equiv="Cache-Control" content="no-cache" />
 <title></title>
 <link href="/htdocs/css/main.css" type="text/css" rel="stylesheet" />
 <link href="/htdocs/css/table_style.css" type="text/css" rel="stylesheet">
+<link href="/htdocs/css/style.css" type="text/css" rel="stylesheet">
 <script type="text/javascript" src="/htdocs/js/jquery.min.js"></script>
 
 <script>
@@ -110,20 +111,20 @@ $(document).ready(documentready);
 <form method="POST" action="/htdocs/index.cgi" id="main">
 <table>
 <tr>
-<td>Имя пользователя*: </td><td><input type="text" name="u_name" id="user"/></td><td>
+<td>Имя пользaвателя*: </td><td><input type="text" name="u_name" id="user"/></td><td>
 <div class="error_c1">
   <TMPL_IF er_user><TMPL_VAR er_user></TMPL_IF>
 </div></td></tr>
-<tr><td>E-mail*: </td><td><input type="text" name="email" id="mail"/></td><td>
+<tr id="main"><td>E-mail*: </td><td><input type="text" name="email" id="mail"/></td><td>
 <div class="error_c1">
   <TMPL_IF er_mail><TMPL_VAR er_mail></TMPL_IF>
 </div></td></tr>
-<tr><td>Домашняя страница: </td><td><input type="text" name="homepage" id="hp"/></td></tr>
-<tr><td>Текст сообщения*: </td><td><textarea rows="10" cols="45" name="post" id="text"></textarea></td><td>
+<tr><td>Д0машняя страница*: </td><td><input type="text" name="homepage" id="hp"/></td></tr>
+<tr><td>Текст сообщения: </td><td><textarea rows="10" cols="45" name="post" id="text"></textarea></td><td>
 <div class="error_c1">
   <TMPL_IF er_post><TMPL_VAR er_post></TMPL_IF>
 </div></td></tr>
-<tr><td>Введите текст, изображенный на картинке*: </td><td><!--<input type="text" name="captcha" id="captcha"/>-->
+<tr><td id="main">Введите текст, изображенный на картинке*<b>: </td><td><!--<input type="text" name="captcha" id="captcha"/>-->
 <script type="text/javascript"
      src="http://www.google.com/recaptcha/api/challenge?k=<TMPL_VAR pkey>">
 </script>
@@ -141,14 +142,15 @@ $(document).ready(documentready);
 <tr><td><input type="hidden" name="do" value="post"/>
 </td></tr>
 </table>
-</form>
+</form><p class="inv">Hello world!</p>
 <button onclick="send();">Отправить</button>
 </div>
+<right class="match" alt="l1"></right>
 <table class="post_table" id="tbl">
 <tr>
   <th><button onclick="tbl_sort(0,Inc);">↑</button><button onclick="tbl_sort(0,Dec);">↓</button></th>
   <th><button onclick="tbl_sort(1,Inc);">↑</button><button onclick="tbl_sort(1,Dec);">↓</button></th>
-  <th><button onclick="tbl_sort(2,Inc);">↑</button><button onclick="tbl_sort(2,Dec);">↓</button></th>
+  <th><button onclick="tbl_sort(2,Inc);">↑</button><button onclick="tbl_sort(2,Dec);" style="display:none;">↓</button></th>
   <th></th>
 </tr>
 <TMPL_LOOP loop>
@@ -167,5 +169,6 @@ $(document).ready(documentready);
     <a href="<TMPL_VAR next>" class="next_number" title="стр. <TMPL_VAR n>">>></a>
   </span>
 </div>
+<img alt="" src="../../cool.jpg" />
 </body>
 </html> 

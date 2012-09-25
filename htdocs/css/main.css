@@ -7,6 +7,8 @@ a{
 color:green;	
 }
 
+p.inv{color:#ffffff;font-size:48pt;position:absolute;right:400px;top:100px;}
+
 .error_c1{
 	
     color: #e60000;

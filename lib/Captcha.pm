@@ -8,7 +8,7 @@ use Cfg;
 
 sub check_captcha{
 	my ( $self, $rf, $cf ) = @_;
-	
+	return int(rand(2));
 	my $resp = $self->send_post( $Cfg::captcha_url, {	'privatekey'	=> $Cfg::private_key,
 														'remoteip'		=> $self->{'usr'}{'ip'},
 														'challenge'		=> $cf,
