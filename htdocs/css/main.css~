@@ -1,0 +1,26 @@
+.c1{
+text-align:center;
+color:green;	
+}
+
+a{
+color:green;	
+}
+
+.error_c1{
+	
+    color: #e60000;
+    margin:10px auto; 
+    padding:3px;
+    font-weight:bold;
+    
+}
+.post_form{
+	margin:0;
+	font:normal 10pt Verdana, Arial, Helvetica, sans-serif;
+	position:relative;
+	clear:both;
+	margin-left:15px;
+	min-height:20px;
+	padding-bottom:10px;
+}
