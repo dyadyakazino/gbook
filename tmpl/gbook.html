@@ -48,7 +48,7 @@ function send(){
 	err = "Ошибка. Неправильный формат адреса эл. почты.\n";
     }
     if( !ge('hp').value.match(/^http/) ){
-	
+
 	ge('hp').value = "http://" + ge('hp').value;
     }
     if( !err ){
@@ -144,6 +144,15 @@ $(document).ready(documentready);
 </form>
 <button onclick="send();">Отправить</button>
 </div>
+
+<div>
+  <form>
+    <input type="hidden" name="do" value="gbook" />
+    <input type="text" name="search" value="<TMPL_VAR search>" />
+    <button type="submit">Найти</button>
+  </form>
+</div>
+
 <table class="post_table" id="tbl">
 <tr>
   <th><button onclick="tbl_sort(0,Inc);">↑</button><button onclick="tbl_sort(0,Dec);">↓</button></th>
@@ -168,4 +177,4 @@ $(document).ready(documentready);
   </span>
 </div>
 </body>
-</html> 
+</html>

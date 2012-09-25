@@ -39,8 +39,10 @@ sub do_gbook{
 	my $self = shift;
 	my $q = $self->query();
 
+	my $search = '%'.$q->param('search').'%';
+
 	#Пейджирование
-	my $req = "SELECT * FROM posts ORDER BY id DESC LIMIT ? OFFSET ?";
+	my $req = "SELECT * FROM posts WHERE post LIKE '$search' ORDER BY id DESC LIMIT ? OFFSET ?";
 
 	my $counter = 0;
 	my $i = 0;
@@ -49,11 +51,12 @@ sub do_gbook{
 	my $page = $q->param('page');
 	$page ||= 1;
 
-	my %all = MyDB->sql_select_line( "SELECT COUNT(*) as c FROM posts" );
+	my %all = MyDB->sql_select_line( "SELECT COUNT(*) as c FROM posts WHERE post LIKE '$search'" );
 	my $all = $all{'c'};
 	my $pages = ceil( $all/$n );
 	my $offset = $n * ( $page - 1 );
 
+	$self->{'t'}->{'search'} = $q->param('search');
 	$self->{'t'}->{'n'} = $n;
 	$self->{'t'}->{'all'} = $all;
 	$self->{'t'}->{'next'} = ( $page == $pages ) ? '#' : 'http://'.$ENV{'HTTP_HOST'}.'/htdocs/index.cgi?do=gbook&page='.( $page + 1 );
@@ -64,7 +67,6 @@ sub do_gbook{
 			'link'			=>	( $i == $page ) ? '#' : 'http://'.$ENV{'HTTP_HOST'}.'/htdocs/index.cgi?do=gbook&page='.$i
 		};
 	}
-
 
 	$req = MyDB->sql( $req, undef, $n, $offset );
 	while( my %r = $req->sql_get_line ){
