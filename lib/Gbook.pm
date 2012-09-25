@@ -30,7 +30,6 @@ sub setup{
 sub index{
 	#Возврат стартовой страницы
 	my $self = shift;
-
 	$self->header_add( '-type' => 'text/html' );
 	return $self->load_tmpl( 'index.html' )->output();
 }
@@ -132,7 +131,7 @@ sub load_tmpl{
 	my $file = shift;
 
 	my $vars = shift || $self->{'t'};
-	my $template = new HTML::Template::Compiled( 	'filename'	=>	$main::HTML_TEMPLATE_ROOT."/$file",
+	my $template = new HTML::Template::Compiled( 	'filename'	=>	"$ENV{'HTML_TEMPLATE_ROOT'}/$file",
 													'global_vars'	=>	'1' );
 	$template->param( %$vars );
 	return $template;
