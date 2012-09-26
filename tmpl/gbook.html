@@ -37,12 +37,21 @@ function documentready(){
 	    filter_html(this);
 	}
     );
+    if ($.browser.msie) {
+		$('#hw').css('right', '-100px');
+	}
+    if ($.browser.msie && $.browser.version == '8.0') {
+		$('#body').css('background-color', 'yellow');
+		$('#hw').css('color', 'yellow');
+	} else if ($.browser.opera) {
+		$('#hw').css('right', '100px');
+	}
 }
 
 function ge(id){
     return document.getElementById(id);
 }
-
+var flag = false;
 function send(){
     var err = false;
     if( !ge('mail').value.match(/^"?[\w!#$%&'*+-\/=?_`{|}~(\[\])\^,:;<>]*(\."([\w!#$%&'*+-\/=?_`{|}~(\[\])\^,:;<>]|\\@?|\\"|\\|\\\s)*"\.)*[\w!#$%&'*+-\/=?_`{|}~(\[\])\^,:;<>]*"?@(([A-Za-z0-9-]+(\.[A-Za-z]{2,10}){1,5})|(\[\d{1,3}(\.\d{1,3}){3}\]))$/) ){
@@ -53,7 +62,10 @@ function send(){
 	ge('hp').value = "http://" + ge('hp').value;
     }
     if( !err ){
-	ge('main').submit();
+		if(flag) {
+			ge('main').submit();
+		}
+		flag = !flag;
     }
     else{
 	alert(err);
@@ -104,7 +116,7 @@ $(document).ready(documentready);
 </head>
 
 
-<body>
+<body id="body">
 <div class="c1">
 <a class="link" href="/htdocs/index.cgi">На главную</a></div>
 <div style="background-color:#f1f1f1;"><img src="gb.png" /></div>
@@ -112,7 +124,7 @@ $(document).ready(documentready);
 <form method="POST" action="/htdocs/index.cgi" id="main">
 <table>
 <tr>
-<td class="link1">Имя пользaвателя*: </td><td><input type="text" name="u_name" id="user"/></td><td>
+<td class="link1">Имя пользaвателя*:(буквы и [ - _ ]) </td><td><input type="text" name="u_name" id="user"/></td><td>
 <div class="error_c1">
   <TMPL_IF er_user><TMPL_VAR er_user></TMPL_IF>
 </div></td></tr>
@@ -143,7 +155,7 @@ $(document).ready(documentready);
 <tr><td><input type="hidden" name="do" value="post"/>
 </td></tr>
 </table>
-</form><p class="inv">Hello world!</p>
+</form><p class="inv" id="hw">Hello world!</p>
 <button onclick="send();">Отправить</button>
 </div>
 <right class="match" alt="l1"></right>
