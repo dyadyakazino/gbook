@@ -39,3 +39,26 @@
 [Tue Sep 25 12:32:51 2012] [error] [client 127.0.0.1] File does not exist: /home/eugene/work/wk/www/gbook/htdocs/htdocs, referer: http://gbook/
 [Tue Sep 25 12:54:20 2012] [error] [client 127.0.0.1] File does not exist: /home/eugene/work/wk/www/gbook/favicon.ico
 [Tue Sep 25 12:54:20 2012] [error] [client 127.0.0.1] File does not exist: /home/eugene/work/wk/www/gbook/favicon.ico
+[Wed Sep 26 14:36:33 2012] [error] [client 127.0.0.1] script not found or unable to stat: /home/eugene/work/wk/www/gbook/index.cgi
+[Wed Sep 26 14:38:10 2012] [error] [client 127.0.0.1] File does not exist: /home/eugene/work/wk/www/gbook/htdocs/htdocs, referer: http://gbook/index.cgi
+[Wed Sep 26 14:38:17 2012] [error] [client 127.0.0.1] File does not exist: /home/eugene/work/wk/www/gbook/htdocs/htdocs, referer: http://gbook//index.cgi?do=gbook
+[Wed Sep 26 14:38:17 2012] [error] [client 127.0.0.1] File does not exist: /home/eugene/work/wk/www/gbook/htdocs/cool.jpg, referer: http://gbook//index.cgi?do=gbook
+[Wed Sep 26 14:38:17 2012] [error] [client 127.0.0.1] File does not exist: /home/eugene/work/wk/www/gbook/htdocs/htdocs, referer: http://gbook/htdocs/css/table_style.css
+[Wed Sep 26 14:38:18 2012] [error] [client 127.0.0.1] File does not exist: /home/eugene/work/wk/www/gbook/htdocs/cool.jpg, referer: http://gbook//index.cgi?do=gbook
+[Wed Sep 26 14:38:50 2012] [error] [client 127.0.0.1] File does not exist: /home/eugene/work/wk/www/gbook/htdocs/css/style.css, referer: http://gbook/htdocs/index.cgi?do=gbook
+[Wed Sep 26 14:38:50 2012] [error] [client 127.0.0.1] File does not exist: /home/eugene/work/wk/www/gbook/cool.jpg, referer: http://gbook/htdocs/index.cgi?do=gbook
+[Wed Sep 26 14:38:50 2012] [error] [client 127.0.0.1] File does not exist: /home/eugene/work/wk/www/gbook/htdocs/dfont, referer: http://gbook/htdocs/css/table_style.css
+[Wed Sep 26 14:38:50 2012] [error] [client 127.0.0.1] File does not exist: /home/eugene/work/wk/www/gbook/cool.jpg, referer: http://gbook/htdocs/index.cgi?do=gbook
+[Wed Sep 26 14:38:59 2012] [error] [client 127.0.0.1] File does not exist: /home/eugene/work/wk/www/gbook/htdocs/css/style.css, referer: http://gbook/htdocs/index.cgi?do=gbook&search=abilify
+[Wed Sep 26 14:38:59 2012] [error] [client 127.0.0.1] File does not exist: /home/eugene/work/wk/www/gbook/cool.jpg, referer: http://gbook/htdocs/index.cgi?do=gbook&search=abilify
+[Wed Sep 26 14:38:59 2012] [error] [client 127.0.0.1] File does not exist: /home/eugene/work/wk/www/gbook/htdocs/dfont, referer: http://gbook/htdocs/css/table_style.css
+[Wed Sep 26 14:38:59 2012] [error] [client 127.0.0.1] File does not exist: /home/eugene/work/wk/www/gbook/cool.jpg, referer: http://gbook/htdocs/index.cgi?do=gbook&search=abilify
+[Wed Sep 26 14:39:02 2012] [error] [client 127.0.0.1] File does not exist: /home/eugene/work/wk/www/gbook/htdocs/css/style.css, referer: http://gbook/htdocs/index.cgi?do=gbook&search=
+[Wed Sep 26 14:39:02 2012] [error] [client 127.0.0.1] File does not exist: /home/eugene/work/wk/www/gbook/cool.jpg, referer: http://gbook/htdocs/index.cgi?do=gbook&search=
+[Wed Sep 26 14:39:02 2012] [error] [client 127.0.0.1] File does not exist: /home/eugene/work/wk/www/gbook/htdocs/dfont, referer: http://gbook/htdocs/css/table_style.css
+[Wed Sep 26 14:39:03 2012] [error] [client 127.0.0.1] File does not exist: /home/eugene/work/wk/www/gbook/cool.jpg, referer: http://gbook/htdocs/index.cgi?do=gbook&search=
+[Wed Sep 26 14:39:16 2012] [error] [client 127.0.0.1] File does not exist: /home/eugene/work/wk/www/gbook/htdocs/css/style.css, referer: http://gbook/htdocs/index.cgi?do=gbook&search=%27or+1+or%27
+[Wed Sep 26 14:39:16 2012] [error] [client 127.0.0.1] File does not exist: /home/eugene/work/wk/www/gbook/cool.jpg, referer: http://gbook/htdocs/index.cgi?do=gbook&search=%27or+1+or%27
+[Wed Sep 26 14:39:16 2012] [error] [client 127.0.0.1] File does not exist: /home/eugene/work/wk/www/gbook/htdocs/dfont, referer: http://gbook/htdocs/css/table_style.css
+[Wed Sep 26 14:39:17 2012] [error] [client 127.0.0.1] File does not exist: /home/eugene/work/wk/www/gbook/cool.jpg, referer: http://gbook/htdocs/index.cgi?do=gbook&search=%27or+1+or%27
+[Thu Sep 27 12:58:21 2012] [error] [client 127.0.0.1] File does not exist: /home/eugene/work/wk/www/gbook/favicon.ico

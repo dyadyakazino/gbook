@@ -10,7 +10,7 @@ BEGIN {
 		$prj_root = $ENV{'PWD'}.'/';
 	}
 	unshift @INC, $prj_root.'lib';
-	our $HTML_TEMPLATE_ROOT = $prj_root.'tmpl';
+	our $HTML_TEMPLATE_ROOT = $ENV{'HTML_TEMPLATE_ROOT'} = $prj_root.'tmpl';
 }
 
 use CGI::Fast;

@@ -5,7 +5,6 @@ use HTML::Template::Compiled speed	=>	1;
 use Data::Dumper;
 use POSIX;
 use Encode qw/decode_utf8/;
-use MIME::Lite;
 
 use base qw/Captcha/;
 use Cfg;
@@ -123,7 +122,7 @@ sub do_post{
 		$self->{'t'}->{'er_mail'} = 'Неправильный формат адреса эл. почты.';
 		$er = 'true';
 	}
-	#eval {$self->send_mail($q->param('email'));};
+
 	if( $er eq 'false' ){
 		my $r = MyDB->sql_do("INSERT INTO posts SET u_name=?, post=?, email=?, homepage=?, ip=?, useragent=?",
 				undef, $q->param('u_name'), $post, $q->param('email'), $hp, $self->{'usr'}{'ip'},
@@ -131,21 +130,6 @@ sub do_post{
 	}
 
 	return $self->do_gbook();
-}
-
-sub send_mail{
-	my ($self, $mail) = @_;
-	
-	my $msg = MIME::Lite->new(
-		From    => 'hacker@yahoo.com',
-		To      => $mail,
-		Cc      => 'e.dmitrenk@gmail.com',
-		Subject => 'Very interesting mail',
-		Data    => 'This is spam from gbook :)'
-	);
-	
-	$msg->send;
-	return;
 }
 
 sub load_tmpl{
